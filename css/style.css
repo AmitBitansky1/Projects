@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  flex-direction: row;
+  background-color: gray;
+}
+.equation {
+  margin: auto;
+  width: 40%;
+  font-size: 3rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.functionality {
+  width: 40%;
+  font-size: 3rem;
+}
