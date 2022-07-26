@@ -1,0 +1,79 @@
+body {
+  display: grid;
+  row-gap: 5vh;
+  background-color: #c0d9d9;
+  grid-template-columns: 50% 50%;
+}
+
+.header{
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  border-bottom: .25vh solid black;
+}
+
+.title{
+  font-size: 4.5rem;
+  text-align: center;
+}
+
+.equation {
+  grid-column-start: 1;
+  grid-row-start: 2;
+  margin: 0 auto;
+  font-size: 3rem;
+  gap: 1rem;
+}
+.equationAdjuster {
+  color: blue;
+  border-bottom: .25vw solid black;
+}
+
+.left{
+  text-align: right;
+}
+.right{
+  text-align: left;
+}
+.equals{
+  text-align: center;
+}
+
+.equationButton {
+  margin: 1vw 1vh;
+  padding: 1.2vw 3vh;
+  font-size: 3rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+.functionality {
+  margin: auto;
+  font-size: 3rem;
+  grid-column-start: 2;
+  grid-row-start: 2;
+}
+.buttons{
+  border: .5vw solid black;
+}
+
+.buttonsOutput{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  border-bottom: .1vw solid black;
+}
+
+.calculateButton{
+  margin: 1vw 1vh;
+  padding: 1.2vw 3vh;
+  font-size: 3rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.solved{
+  text-align: center;
+}

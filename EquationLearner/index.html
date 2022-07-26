@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Learning Equations</title>
+  <script defer src="./js/main.js" type="module"></script>
+</head>
+<body>
+  <div class="header">
+    <div class="title">Learning Equations</div>
+  </div>
+  <div class="equation"> 
+    <table id="equationTable">     
+    </table>
+  </div>
+  <div class="vertLine"></div>
+  <div class="functionality">
+    <div class="buttons">
+      <div class="Operations"> 
+        <input type="button" class="operation equationButton" value="+"> 
+        <input type="button" class="operation equationButton" value="-"> 
+        <input type="button" class="operation equationButton" value="*">
+        <input type="button" class="operation equationButton" value="/">
+      </div>
+      <div class="Variables" id="variables"> 
+        
+      </div>
+    </div>
+    
+    <div class="buttonsOutput" id="buttonsOutput">
+      <div class="operation" id="operation"></div>
+      <div class="variableText" id="variable"></div>
+    </div>
+    <div class="calculateButton"><input type="button" class="calculateButton" id="calculate" value="Calculate"/></div>
+    <div class="solved" id="solved"></div>
+  </div>
+</body>
+</html>
