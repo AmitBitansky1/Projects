@@ -1,31 +1,31 @@
-import createRegularEquation from "./regularEquation.js";
+import createRegularEquation from "./equations/regularEquation.js";
 
-import updateEquation from "./updateEquation.js";
+import updateEquation from "./equations/updateEquation.js";
 
 import createVariableButtons from "./buttons/createVariableButtons.js";
 
 import addButtonFunctionality from "./buttons/addButtonFunctionality.js";
 
-import createNewEquation from "./newEquation.js";
+import createRandomEquation from "./equations/createRandomEquation.js";
 
 function initialize() {
-  const newEquation = createNewEquation();
+  const randomEquation = createRandomEquation();
 
   createRegularEquation(
-    newEquation[0],
-    newEquation[1],
-    newEquation[2],
-    newEquation[3],
+    randomEquation[0],
+    randomEquation[1],
+    randomEquation[2],
+    randomEquation[3],
     "regular"
   );
 
-  updateEquation(newEquation, "set");
+  updateEquation(randomEquation, "set");
 
   createVariableButtons(
-    newEquation[0],
-    newEquation[1],
-    newEquation[2],
-    newEquation[3]
+    randomEquation[0],
+    randomEquation[1],
+    randomEquation[2],
+    randomEquation[3]
   );
 }
 

@@ -1,5 +1,7 @@
 import createRegularEquation from "./regularEquation.js";
 
+import createVariableButtons from "../buttons/createVariableButtons.js";
+
 let equation = [0, 0, 0, 0];
 
 function updateEquation(newEquation, method = "") {

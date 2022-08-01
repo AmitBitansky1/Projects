@@ -1,6 +1,6 @@
-import createRegularEquation from "./regularEquation.js";
+import createRegularEquation from "./equations/regularEquation.js";
 
-import updateEquation from "./updateEquation.js";
+import updateEquation from "./equations/updateEquation.js";
 
 function calculate(operation, num, variableType) {
   const prevVar2 = document.getElementById("variable2");

@@ -1,4 +1,4 @@
-import createRegularEquation from "./regularEquation.js";
+import createRegularEquation from "./equations/regularEquation.js";
 
 function testOne() {
   createRegularEquation(1, 3, 0, 7, "regular");
