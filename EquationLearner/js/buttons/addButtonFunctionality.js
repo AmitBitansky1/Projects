@@ -7,9 +7,8 @@ function addButtonFunctionality() {
   const operationButtons = document.getElementsByClassName("operation");
   addOperationButtonFunctionality(operationButtons);
 
-  document
-    .getElementById("calculate")
-    .addEventListener("click", calculateInitialize);
+  const calculateButton = document.getElementById("calculate");
+  addCalculateButtonFunctionality(calculateButton);
 }
 
 function addVariableButtonFunctionality(variableButtons) {
@@ -28,6 +27,10 @@ function addOperationButtonFunctionality(operationButtons) {
         operationButtons[i].value;
     });
   }
+}
+
+function addCalculateButtonFunctionality(calculateButton) {
+  calculateButton.addEventListener("click", calculateInitialize);
 }
 
 export default addButtonFunctionality;
