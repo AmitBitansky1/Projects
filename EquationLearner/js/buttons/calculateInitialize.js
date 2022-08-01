@@ -39,7 +39,7 @@ function calculateInitialize() {
     }
   }
 
-  calculate(operation, newVariableText, type);
+  calculate(operation, variableFloat, type);
 }
 
 export default calculateInitialize;
