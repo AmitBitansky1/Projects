@@ -1,4 +1,4 @@
-import createRegularEquation from "./equations/regularEquation.js";
+import createEquation from "./equations/createEquation.js";
 
 import updateEquation from "./equations/updateEquation.js";
 
@@ -11,7 +11,7 @@ import createRandomEquation from "./equations/createRandomEquation.js";
 function initialize() {
   const randomEquation = createRandomEquation();
 
-  createRegularEquation(
+  createEquation(
     randomEquation[0],
     randomEquation[1],
     randomEquation[2],
