@@ -1,4 +1,4 @@
-import calculateInitialize from "./calculateInitialize.js";
+import calculateInitialize from "../calculate/calculateInitialize.js";
 
 function addButtonFunctionality() {
   const variableButtons = document.getElementsByClassName("variable");
