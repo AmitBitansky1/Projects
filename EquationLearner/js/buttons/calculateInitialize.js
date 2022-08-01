@@ -3,10 +3,8 @@ import calculate from "../calculate.js";
 function calculateInitialize() {
   let operationText = document.getElementById("operation").textContent;
   let variableText = document.getElementById("variable").textContent;
-  let type;
 
-  if (variableText.includes("x")) type = "variable";
-  if (!variableText.includes("x")) type = "constant";
+  let type = variableText.includes("x") ? "variable" : "constant";
 
   let operation;
   if (operationText == "+") operation = "add";
