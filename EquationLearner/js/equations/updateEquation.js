@@ -1,4 +1,4 @@
-import createRegularEquation from "./regularEquation.js";
+import createEquation from "./createEquation.js";
 
 import createVariableButtons from "../buttons/createVariableButtons.js";
 
@@ -24,7 +24,7 @@ function updateEquation(newEquation, method = "") {
     if (method.includes("divide")) {
       divideEquation(newEquation);
     }
-    createEquation();
+    createNewEquation();
     createAllVariableButtons();
   }
   if (isXIsolated()) {
@@ -67,8 +67,8 @@ function divideEquation(newEquation) {
   if (equation[3] != 0) equation[3] /= newEquation[3];
 }
 
-function createEquation() {
-  createRegularEquation(
+function createNewEquation() {
+  createEquation(
     Math.floor(equation[0] * 100) / 100,
     Math.floor(equation[1] * 100) / 100,
     Math.floor(equation[2] * 100) / 100,

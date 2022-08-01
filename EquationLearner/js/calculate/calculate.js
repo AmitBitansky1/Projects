@@ -1,4 +1,4 @@
-import createRegularEquation from "../equations/regularEquation.js";
+import createEquation from "../equations/createEquation.js";
 
 import updateEquation from "../equations/updateEquation.js";
 
@@ -20,16 +20,16 @@ function calculate(operation, num, variableType) {
 
     correctUpdateEquation(variableType, num, operation);
   } else {
-    createRegularEquation(num, num, num, num, "adjuster", operation);
+    createEquation(num, num, num, num, "adjuster", operation);
     updateEquation([num, num, num, num], `operation ${operation}`);
   }
 }
 
 function createCorrectAdjuster(variableType, num, operation) {
   if (variableType == "variable")
-    createRegularEquation(num, 0, num, 0, "adjuster", operation);
+    createEquation(num, 0, num, 0, "adjuster", operation);
   if (variableType == "constant")
-    createRegularEquation(0, num, 0, num, "adjuster", operation);
+    createEquation(0, num, 0, num, "adjuster", operation);
 }
 
 function correctUpdateEquation(variableType, num, operation) {
