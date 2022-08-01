@@ -27,8 +27,6 @@ function initialize() {
     newEquation[2],
     newEquation[3]
   );
-
-  addButtonFunctionality();
 }
 
 export default initialize;
