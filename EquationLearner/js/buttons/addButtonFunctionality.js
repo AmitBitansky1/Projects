@@ -1,6 +1,6 @@
 import calculateInitialize from "./calculateInitialize.js";
 
-function buttonFunctionality() {
+function addButtonFunctionality() {
   const variableButtons = document.getElementsByClassName("variable");
   addVariableButtonFunctionality(variableButtons);
 
@@ -30,4 +30,4 @@ function addOperationButtonFunctionality(operationButtons) {
   }
 }
 
-export default buttonFunctionality;
+export default addButtonFunctionality;

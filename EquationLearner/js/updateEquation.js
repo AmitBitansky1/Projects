@@ -1,4 +1,3 @@
-import createVariableButtons from "./buttons/setVariableButtons.js";
 import createRegularEquation from "./regularEquation.js";
 
 let equation = [0, 0, 0, 0];
@@ -9,16 +8,12 @@ function updateEquation(newEquation, method = "") {
     equation[1] = newEquation[1];
     equation[2] = newEquation[2];
     equation[3] = newEquation[3];
-    console.log(equation);
   }
   if (method == "get") {
     return equation;
   }
   if (method.includes("operation")) {
-    console.log(equation);
     if (method.includes("add")) {
-      console.log(equation);
-      console.log(newEquation);
       equation[0] += newEquation[0];
       equation[1] += newEquation[1];
       equation[2] += newEquation[2];
@@ -37,8 +32,6 @@ function updateEquation(newEquation, method = "") {
       equation[3] *= newEquation[3];
     }
     if (method.includes("divide")) {
-      console.log(equation);
-      console.log(newEquation);
       if (equation[0] != 0) equation[0] /= newEquation[0];
       if (equation[1] != 0) equation[1] /= newEquation[1];
       if (equation[2] != 0) equation[2] /= newEquation[2];
@@ -58,7 +51,6 @@ function updateEquation(newEquation, method = "") {
       Math.floor(equation[3] * 100) / 100
     );
   }
-  console.log(equation);
   if (
     (equation[0] == 1 && equation[1] == 0 && equation[2] == 0) ||
     (equation[0] == 0 && equation[2] == 1 && equation[3] == 0)

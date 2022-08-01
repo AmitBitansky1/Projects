@@ -2,9 +2,9 @@ import createRegularEquation from "./regularEquation.js";
 
 import updateEquation from "./updateEquation.js";
 
-import createVariableButtons from "./buttons/setVariableButtons.js";
+import createVariableButtons from "./buttons/createVariableButtons.js";
 
-import buttonFunctionality from "./buttons/buttonFunctionality.js";
+import addButtonFunctionality from "./buttons/addButtonFunctionality.js";
 
 import createNewEquation from "./newEquation.js";
 
@@ -28,7 +28,7 @@ function initialize() {
     newEquation[3]
   );
 
-  buttonFunctionality();
+  addButtonFunctionality();
 }
 
 export default initialize;
