@@ -40,56 +40,52 @@ function setEquation(newEquation) {
 }
 
 function addEquation(newEquation) {
-  equation[0] += newEquation[0];
-  equation[1] += newEquation[1];
-  equation[2] += newEquation[2];
-  equation[3] += newEquation[3];
+  equation[0].add(newEquation[0]);
+  equation[1].add(newEquation[1]);
+  equation[2].add(newEquation[2]);
+  equation[3].add(newEquation[3]);
 }
 
 function subtractEquation(newEquation) {
-  equation[0] -= newEquation[0];
-  equation[1] -= newEquation[1];
-  equation[2] -= newEquation[2];
-  equation[3] -= newEquation[3];
+  equation[0].add(newEquation[0]);
+  equation[1].add(newEquation[1]);
+  equation[2].add(newEquation[2]);
+  equation[3].add(newEquation[3]);
 }
 
 function multiplyEquation(newEquation) {
-  equation[0] *= newEquation[0];
-  equation[1] *= newEquation[1];
-  equation[2] *= newEquation[2];
-  equation[3] *= newEquation[3];
+  equation[0].multiply(newEquation[0]);
+  equation[1].multiply(newEquation[1]);
+  equation[2].multiply(newEquation[2]);
+  equation[3].multiply(newEquation[3]);
 }
 
 function divideEquation(newEquation) {
-  if (equation[0] != 0) equation[0] /= newEquation[0];
-  if (equation[1] != 0) equation[1] /= newEquation[1];
-  if (equation[2] != 0) equation[2] /= newEquation[2];
-  if (equation[3] != 0) equation[3] /= newEquation[3];
+  if (equation[0] != 0) equation[0].divide(newEquation[0]);
+  if (equation[1] != 0) equation[1].divide(newEquation[1]);
+  if (equation[2] != 0) equation[2].divide(newEquation[2]);
+  if (equation[3] != 0) equation[3].divide(newEquation[3]);
 }
 
 function createNewEquation() {
-  createEquation(
-    Math.floor(equation[0] * 100) / 100,
-    Math.floor(equation[1] * 100) / 100,
-    Math.floor(equation[2] * 100) / 100,
-    Math.floor(equation[3] * 100) / 100,
-    "regular"
-  );
+  createEquation(equation[0], equation[1], equation[2], equation[3], "regular");
 }
 
 function createAllVariableButtons() {
-  createVariableButtons(
-    Math.floor(equation[0] * 100) / 100,
-    Math.floor(equation[1] * 100) / 100,
-    Math.floor(equation[2] * 100) / 100,
-    Math.floor(equation[3] * 100) / 100
-  );
+  createVariableButtons(equation[0], equation[1], equation[2], equation[3]);
 }
 
 function isXIsolated() {
+  console.log(equation);
   if (
-    (equation[0] == 1 && equation[1] == 0 && equation[2] == 0) ||
-    (equation[0] == 0 && equation[2] == 1 && equation[3] == 0)
+    (equation[0].numerator.coefficient == 1 &&
+      equation[0].denominator == 1 &&
+      equation[1].numerator == 0 &&
+      (equation[2].numerator == 0 || equation[2].numerator.coefficient == 0)) ||
+    (equation[0].numerator == 0 &&
+      equation[2].numerator.coefficient == 1 &&
+      equation[2].denominator == 1 &&
+      equation[3] == 0)
   )
     return true;
   return false;

@@ -1,22 +1,18 @@
 import createEquation from "../equations/createEquation.js";
-
 import updateEquation from "../equations/updateEquation.js";
 
-function calculate(operation, num, variableType) {
+import Variable from "../MathClass/variables.js";
+import Fraction from "../MathClass/fraction.js";
+
+function calculate(operation, variable, variableType) {
+  let num = variable?.isVariable ? variable.coefficient : variable;
   if (operation == "add" || operation == "subtract") {
     //Add Negative
     if (operation == "subtract") {
       num *= -1;
       operation = "add";
     }
-
     createCorrectAdjuster(variableType, num, operation);
-
-    //Normal Subtract
-    if (num < 0 && operation == "add") {
-      num *= -1;
-      operation = "subtract";
-    }
 
     correctUpdateEquation(variableType, num, operation);
   } else {
@@ -27,16 +23,39 @@ function calculate(operation, num, variableType) {
 
 function createCorrectAdjuster(variableType, num, operation) {
   if (variableType == "variable")
-    createEquation(num, 0, num, 0, "adjuster", operation);
+    createEquation(
+      new Variable(num),
+      0,
+      new Variable(num),
+      0,
+      "adjuster",
+      operation
+    );
   if (variableType == "constant")
     createEquation(0, num, 0, num, "adjuster", operation);
 }
 
 function correctUpdateEquation(variableType, num, operation) {
   if (variableType == "variable")
-    updateEquation([num, 0, num, 0], `operation ${operation}`);
+    updateEquation(
+      [
+        new Fraction(new Variable(num), 1),
+        new Fraction(0, 1),
+        new Fraction(new Variable(num), 1),
+        new Fraction(0, 1),
+      ],
+      `operation ${operation}`
+    );
   if (variableType == "constant")
-    updateEquation([0, num, 0, num], `operation ${operation}`);
+    updateEquation(
+      [
+        new Fraction(0, 1),
+        new Fraction(num, 1),
+        new Fraction(0, 1),
+        new Fraction(num, 1),
+      ],
+      `operation ${operation}`
+    );
 }
 
 export default calculate;

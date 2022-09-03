@@ -1,3 +1,5 @@
+import Variable from "../MathClass/variables.js";
+import Fraction from "../MathClass/fraction.js";
 import updateEquation from "./updateEquation.js";
 
 function createEquation(
@@ -13,7 +15,15 @@ function createEquation(
   let prevConst1;
   let prevVar2;
   let prevConst2;
-  if (prevEquation != [0, 0, 0, 0]) {
+  if (
+    prevEquation !=
+    [
+      new Fraction(new Variable(0), 1),
+      new Fraction(0, 1),
+      new Fraction(new Variable(0), 1),
+      new Fraction(0, 1),
+    ]
+  ) {
     prevVar1 = prevEquation[0];
     prevConst1 = prevEquation[1];
     prevVar2 = prevEquation[2];
@@ -33,7 +43,7 @@ function createEquation(
   const newRow = table.insertRow();
 
   //Left-Side of Equation
-  if (constant1 == 0 && prevConst1 == 0) {
+  if (constant1.numerator == 0 && prevConst1.numerator == 0) {
     createEquationHalf(newRow, "left", "constant", equation);
   } else {
     createEquationHalf(newRow, "left", "variable", equation);
@@ -49,6 +59,7 @@ function createEquation(
   } else {
     createEquationHalf(newRow, "right", "variable", equation);
   }
+  MathJax.typeset();
 }
 
 function createEquationString(
@@ -90,14 +101,18 @@ function createEquationString(
 
 function createVariableString(variable, typeEquation, typeOperation) {
   let hideVariable =
-    variable == 0 || typeOperation == "divide" || typeOperation == "multiply";
+    variable == 0 ||
+    variable.coefficient == 0 ||
+    typeOperation == "divide" ||
+    typeOperation == "multiply";
   if (hideVariable) return "";
-  if (variable == 1 && typeEquation == "adjuster") return ` +x`;
-  if (variable == 1) return ` x`;
-  if (variable == -1) return `-x`;
-  if (typeEquation == "adjuster" && variable > 0) return `+${variable}x`;
-  if (variable > 1) return ` ${variable}x`;
-  return `${variable}x`;
+  if (variable.coefficient == 1 && typeEquation == "adjuster") return ` +x`;
+  if (variable.coefficient == 1) return ` x`;
+  if (variable.coefficient == -1) return `-x`;
+  if (typeEquation == "adjuster" && variable.coefficient > 0)
+    return `+${variable}`;
+  if (variable.coefficient > 1) return ` ${variable}`;
+  return `${variable.toString()}`;
 }
 
 function createConstantString(
@@ -108,11 +123,14 @@ function createConstantString(
   typeEquation,
   typeOperation
 ) {
+  console.log(constant);
   let hideConstant =
-    (constant == 0 && variable != 0) ||
+    (constant == 0 && variable.numerator != 0) ||
     typeOperation == "divide" ||
     typeOperation == "multiply";
   if (hideConstant) return "";
+  if (constant?.isFraction && constant.denominator != 1)
+    return `${constant.toString()}`;
   if (
     typeEquation == "adjuster" &&
     constant > 0 &&
@@ -121,21 +139,29 @@ function createConstantString(
     return `+${constant}`;
   if (typeEquation == "adjuster" && constant < 0) return `${constant}`;
   if (constant >= 0) return ` ${constant}`;
-  if (
+  /*if (
     typeEquation == "adjuster" ||
-    (typeEquation == "regular" && variable != 0)
+    (typeEquation == "regular" &&
+      variable.numerator.coefficient != 0 &&
+      typeOperation == "subtract")
   )
-    constant *= -1;
+    constant *= -1;*/
+  if (constant < 0 && variable.numerator != 0) constant *= -1;
   return `${constant}`;
 }
 
 function createOperationString(variable, constant, typeOperation) {
-  let hideOperation = constant == 0 || variable == 0;
+  let hideOperation =
+    constant == 0 ||
+    variable == 0 ||
+    variable?.coefficient == 0 ||
+    variable?.numerator?.coefficient == 0;
   if (hideOperation) return "";
   if (constant > 0 && typeOperation == "divide") return ` /${constant}`;
-  if (variable > 0 && typeOperation == "divide") return ` /${variable}`;
+  if (variable.isPositive && typeOperation == "divide") return ` /${variable}`;
   if (constant > 0 && typeOperation == "multiply") return ` *${constant}`;
-  if (variable > 0 && typeOperation == "multiply") return ` *${variable}`;
+  if (variable.isPositive && typeOperation == "multiply")
+    return ` *${variable}`;
   if (constant > 0) return ` + `;
   return ` - `;
 }

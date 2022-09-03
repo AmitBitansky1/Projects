@@ -1,4 +1,5 @@
-import calculate from "../calculate.js";
+import calculate from "./calculate.js";
+import Variable from "../MathClass/variables.js";
 
 function calculateInitialize() {
   let operationText = document.getElementById("operation").textContent;
@@ -10,11 +11,9 @@ function calculateInitialize() {
   variableText = variableIdentityCheck(variableText);
   let variableFloat = variableTextToFloat(variableText, type);
 
-  if (variableFloat < 0) {
-    if (operation == "subtract") {
-      variableFloat *= -1;
-      operation = "add";
-    }
+  if (variableFloat < 0 && operation == "subtract") {
+    variableFloat *= -1;
+    operation = "add";
   }
 
   calculate(operation, variableFloat, type);
@@ -23,7 +22,7 @@ function calculateInitialize() {
 function setOperation(operationText) {
   if (operationText == "+") return "add";
   if (operationText == "-") return "subtract";
-  if (operationText == "x") return "multiply";
+  if (operationText == "*") return "multiply";
   if (operationText == "/") return "divide";
 }
 
@@ -38,7 +37,8 @@ function variableIdentityCheck(variableText) {
 }
 
 function variableTextToFloat(variableText, type) {
-  if (type == "variable") return parseFloat(variableText.split("x")[0]);
+  if (type == "variable")
+    return new Variable(parseFloat(variableText.split("x")[0]));
   if (type == "constant") return parseFloat(variableText);
 }
 

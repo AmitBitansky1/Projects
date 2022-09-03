@@ -4,8 +4,6 @@ import updateEquation from "./equations/updateEquation.js";
 
 import createVariableButtons from "./buttons/createVariableButtons.js";
 
-import addButtonFunctionality from "./buttons/addButtonFunctionality.js";
-
 import createRandomEquation from "./equations/createRandomEquation.js";
 
 function initialize() {

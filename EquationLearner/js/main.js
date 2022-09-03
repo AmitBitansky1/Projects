@@ -13,3 +13,5 @@
 import initialize from "./initialize.js";
 
 initialize();
+
+MathJax.typeset();
