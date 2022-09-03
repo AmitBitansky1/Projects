@@ -12,6 +12,6 @@
 
 import initialize from "./initialize.js";
 
-MathJax.Hub.Queue(initialize());
+initialize();
 
 MathJax.typeset();
