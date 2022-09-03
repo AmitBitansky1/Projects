@@ -59,7 +59,7 @@ function createEquation(
   } else {
     createEquationHalf(newRow, "right", "variable", equation);
   }
-  MathJax.typeset();
+  MathJax.Hub.Queue(MathJax.typeset());
 }
 
 function createEquationString(
